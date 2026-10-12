@@ -4,6 +4,13 @@ All notable changes to **Bot Bridge Webcam** are documented here.
 This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-10-12
+
+### Changed
+
+- Marketplace listing metadata: added the **AI** and **Chat** categories,
+  expanded the keyword list, and sharpened the display name and description.
+
 ## [0.1.0] - 2026-10-12
 
 ### Added
