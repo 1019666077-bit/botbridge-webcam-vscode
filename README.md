@@ -20,6 +20,18 @@ encodes **one JPEG**, and releases the camera. Nothing is uploaded.
 
 ---
 
+## Screenshots
+
+The commands, the environment check and the settings, as they appear in the
+editor. The environment check resolved the pinned package and listed the MCP
+tools (`webcam_panel`, `take_photo`, `record_video`) without opening the camera.
+
+![The Bot Bridge Webcam commands in the Command Palette](media/screenshot-command-palette.png)
+
+![Check Environment resolves uv, the pinned package and the MCP tools](media/screenshot-environment-check.png)
+
+![The Bot Bridge Webcam settings](media/screenshot-settings.png)
+
 ## Requirements
 
 | Requirement | Why |
