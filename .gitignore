@@ -1,0 +1,14 @@
+node_modules/
+out/
+*.vsix
+*.log
+
+# Local task scratch files (not part of the extension)
+PROMPT.md
+err.txt
+out.txt
+ACCEPT.md
+
+# Python
+__pycache__/
+*.pyc

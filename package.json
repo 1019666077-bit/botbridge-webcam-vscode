@@ -1,0 +1,131 @@
+{
+  "name": "botbridge-webcam",
+  "displayName": "Bot Bridge Webcam",
+  "description": "Give GitHub Copilot Chat and VS Code agents a local webcam for snapshots. Local-only, no cloud upload. Pro desktop Helper sold separately.",
+  "version": "0.1.0",
+  "publisher": "botbridge",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Machine Learning",
+    "Other"
+  ],
+  "keywords": [
+    "webcam",
+    "camera",
+    "mcp",
+    "model-context-protocol",
+    "copilot",
+    "agent",
+    "vision",
+    "photo",
+    "snapshot",
+    "botbridge"
+  ],
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#0B1220",
+    "theme": "dark"
+  },
+  "homepage": "https://botbridge.dev/webcam",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1019666077-bit/botbridge-webcam-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/1019666077-bit/botbridge-webcam-vscode/issues"
+  },
+  "qna": "marketplace",
+  "pricing": "Free",
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "botbridge-webcam",
+        "label": "Bot Bridge Webcam"
+      }
+    ],
+    "commands": [
+      {
+        "command": "botbridge-webcam.checkEnvironment",
+        "title": "Bot Bridge Webcam: Check Environment",
+        "category": "Bot Bridge Webcam"
+      },
+      {
+        "command": "botbridge-webcam.refresh",
+        "title": "Bot Bridge Webcam: Refresh MCP Server",
+        "category": "Bot Bridge Webcam"
+      },
+      {
+        "command": "botbridge-webcam.openHomepage",
+        "title": "Bot Bridge Webcam: Open Homepage",
+        "category": "Bot Bridge Webcam"
+      }
+    ],
+    "configuration": {
+      "title": "Bot Bridge Webcam",
+      "properties": {
+        "botbridge-webcam.enabled": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Register the local webcam MCP server with VS Code. When off, no MCP server is offered and no camera process is started."
+        },
+        "botbridge-webcam.uvPath": {
+          "type": "string",
+          "default": "uv",
+          "scope": "machine",
+          "markdownDescription": "Path to the [`uv`](https://docs.astral.sh/uv/) executable used to launch the local webcam MCP server. Use an absolute path if `uv` is not on the VS Code `PATH`.\n\n_Machine scope:_ this can only be set in user settings, never per workspace, so a cloned repository cannot redirect the executable that gets launched."
+        },
+        "botbridge-webcam.packageSpec": {
+          "type": "string",
+          "default": "git+https://github.com/1019666077-bit/webcam_mcp@35f60e7123bae2ac66491192bb92c5ab43ddc363",
+          "scope": "machine",
+          "markdownDescription": "Python package spec for the local webcam MCP server, passed to `uv run --with`. Defaults to the fork that exposes the `webcam_panel` tool, pinned to an immutable commit (the commit behind tag `v0.2.0`). Advanced users may point this at a local build path.\n\n_Machine scope:_ this can only be set in user settings, never per workspace, so a cloned repository cannot inject an arbitrary package that this extension would execute."
+        },
+        "botbridge-webcam.cameraIndex": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "markdownDescription": "Camera device index passed to the webcam MCP server (0 = default camera)."
+        },
+        "botbridge-webcam.photoWidth": {
+          "type": "number",
+          "default": 1920,
+          "minimum": 1,
+          "description": "Default captured photo width in pixels."
+        },
+        "botbridge-webcam.photoHeight": {
+          "type": "number",
+          "default": 1080,
+          "minimum": 1,
+          "description": "Default captured photo height in pixels."
+        },
+        "botbridge-webcam.jpegQuality": {
+          "type": "number",
+          "default": 90,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "JPEG quality for captured photos (1-100)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "lint": "tsc -p ./ --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "@types/vscode": "1.101.0",
+    "@vscode/vsce": "^4.0.0",
+    "typescript": "~5.9.0"
+  }
+}
